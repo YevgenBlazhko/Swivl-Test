@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.swivl.ui.main.users.User" />
+
+        <variable
+            name="viewModel"
+            type="com.example.swivl.ui.main.users_details.UserDetailsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:subtitleTextColor="@color/white"
+            app:titleTextColor="@color/white" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar">
+
+            <ImageView
+                android:id="@+id/avatar_iv"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="48dp"
+                app:imageUrlCrop="@{viewModel.userLiveDataLiveData.avatar_url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/login_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                tools:text="User user"
+                android:text="@{viewModel.userLiveDataLiveData.login}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatar_iv" />
+
+            <TextView
+                android:id="@+id/site_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:text="www."
+                android:text="@{viewModel.userLiveDataLiveData.html_url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_tv" />
+
+            <TextView
+                android:id="@+id/repo_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                tools:text="11"
+                android:textSize="24sp"
+                android:text="@{viewModel.userLiveDataLiveData.public_repos}"
+                app:layout_constraintEnd_toStartOf="@+id/gists_num_tv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/site_tv" />
+
+            <TextView
+                android:id="@+id/repo_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/repo_num_tv"
+                app:layout_constraintStart_toStartOf="@+id/repo_num_tv"
+                app:layout_constraintTop_toBottomOf="@+id/repo_num_tv"
+                android:text="Repos" />
+
+            <TextView
+                android:id="@+id/gists_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                tools:text="11"
+                android:textSize="24sp"
+                android:text="@{viewModel.userLiveDataLiveData.public_gists}"
+                app:layout_constraintEnd_toStartOf="@+id/followers_num_tv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/repo_num_tv"
+                app:layout_constraintTop_toBottomOf="@+id/site_tv" />
+
+            <TextView
+                android:id="@+id/gists_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/gists_num_tv"
+                app:layout_constraintStart_toStartOf="@+id/gists_num_tv"
+                app:layout_constraintTop_toBottomOf="@+id/gists_num_tv"
+                android:text="Gists" />
+
+            <TextView
+                android:id="@+id/followers_num_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                tools:text="11"
+                android:text="@{viewModel.userLiveDataLiveData.followers}"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/gists_num_tv"
+                app:layout_constraintTop_toBottomOf="@+id/site_tv" />
+
+            <TextView
+                android:id="@+id/followers_text_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/followers_num_tv"
+                app:layout_constraintStart_toStartOf="@+id/followers_num_tv"
+                app:layout_constraintTop_toBottomOf="@+id/followers_num_tv"
+                android:text="Followers" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</layout>
